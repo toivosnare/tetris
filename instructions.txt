@@ -1,0 +1,28 @@
+Käyttöohje
+Pelin säännöt vastaavat pitkälti perinteistä tetristä. Putoavaa tetrominoa
+pystyy liikuttamaan ASD-näppäimistä, kääntämään W-näppäimestä, pudottamaan
+Q-näppäimestä ja ottamaan pitoon E-näppäimestä.
+Minimivaatimusten lisäksi peliin on toteutettu seuraavat lisäominaisuudet:
+1. 7 erilaista terominoa.
+2. Putoavaa tetrominoa pystyy kääntämään.
+3. Pysähtynyttä tetrominoa pystyy liikuttamaan, jos seuraava teromino ei ole
+vielä ilmestynyt pelialueelle.
+4. Täysinäiset vaakarivit poistetaan.
+6. Pisteitä saa poistetuista riveistä ja se ilmoitetaan käyttäjälle.
+8. Tetrominojen puatoaminen nopeutuu automaattisesti pelin edetessä.
+9. Pelin päättyessä peliasetelman voi palauttaa alkutilanteeseen.
+11. Putoavan tetrominon lisäksi pelialueella on näkyvissä seuraava tetromino.
+12. Pelissä on pitotoiminto (hold). Juuri vapautettua tetrominoa ei voi ottaa
+pitoon välittömästi uudelleen.
+13. Putoavan tetrominon pystyy pudottamaan kerralla niin alas kuin mahdollista.
+
+Toteutus
+Pelin graafinen toteutus perustuu PixelView luokkaan, joka on QGraphicsView:n
+alaluokka. PixelView luo scene objektin, johon asetellaan QGraphicsRectItem-
+olioita ruudukkoon. Ruudukon objektit toimivat "pikseleinä" eli ne eivät liiku,
+mutta vaihtavat vain väriä. MainWindow luokassa on kolme PixelView esiintymää,
+joihin piirretään pelikenttä, seuraava tetromino sekä pidossa oleva tetromino.
+Pelikenttämuuttujaan (QVector<QBrush> field) tallennetaan tippuneiden
+tetrominojen palikat törmäysten laskemista varten. Putoavaa, seuraavaa ja
+pidossa olevaa tetrominoa kuvataan Tetromino luokan objekteilla. Luokkaan
+tallennetaan tetrominon muoto, väri, sijainti ja rotaatio.
